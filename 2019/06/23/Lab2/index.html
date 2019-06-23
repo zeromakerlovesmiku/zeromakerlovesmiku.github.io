@@ -79,16 +79,17 @@
 
 
 
-<meta name="description" content="Existentialism is a Humanism">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zeromaker&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="软件构造Lab2总结 软件构造lab2主要有以下几个任务需要完成   Poetic Walks Re-implement the Social Network in Lab1   每个任务还分别有一些子任务需要实现： Poetic Walks  Test Graph​ Implement Graph​ Implement generic Graph Poetic walks   Re-implem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab2">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/Lab2/index.html">
 <meta property="og:site_name" content="Zeromaker&#39;s Blog">
-<meta property="og:description" content="Existentialism is a Humanism">
+<meta property="og:description" content="软件构造Lab2总结 软件构造lab2主要有以下几个任务需要完成   Poetic Walks Re-implement the Social Network in Lab1   每个任务还分别有一些子任务需要实现： Poetic Walks  Test Graph​ Implement Graph​ Implement generic Graph Poetic walks   Re-implem">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-23T13:59:04.857Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zeromaker&#39;s Blog">
-<meta name="twitter:description" content="Existentialism is a Humanism">
+<meta name="twitter:title" content="Lab2">
+<meta name="twitter:description" content="软件构造Lab2总结 软件构造lab2主要有以下几个任务需要完成   Poetic Walks Re-implement the Social Network in Lab1   每个任务还分别有一些子任务需要实现： Poetic Walks  Test Graph​ Implement Graph​ Implement generic Graph Poetic walks   Re-implem">
 
 
 
@@ -118,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/23/Lab2/">
 
 
 
 
 
-  <title>Zeromaker's Blog</title>
+  <title>Lab2 | Zeromaker's Blog</title>
   
 
 
@@ -143,8 +144,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -217,9 +217,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -249,9 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/23/Lab2/" itemprop="url">Lab2</a></h1>
+          <h1 class="post-title" itemprop="name headline">Lab2</h1>
         
 
         <div class="post-meta">
@@ -301,9 +299,7 @@
       
 
       
-        
-          
-            <h1 id="软件构造Lab2总结"><a href="#软件构造Lab2总结" class="headerlink" title="软件构造Lab2总结"></a>软件构造Lab2总结</h1><hr>
+        <h1 id="软件构造Lab2总结"><a href="#软件构造Lab2总结" class="headerlink" title="软件构造Lab2总结"></a>软件构造Lab2总结</h1><hr>
 <p>软件构造lab2主要有以下几个任务需要完成</p>
 <blockquote>
 <ul>
@@ -364,8 +360,6 @@
 </ol>
 <h3 id="ChessAndGoGame实现方案-以move为例"><a href="#ChessAndGoGame实现方案-以move为例" class="headerlink" title="ChessAndGoGame实现方案(以move为例)"></a>ChessAndGoGame实现方案(以move为例)</h3><p>实现时，需要尽可能考虑所有可能情况，处理所有的异常情况和可能解<br>代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">move</span><span class="params">(Player nowPlayer,Piece nowPiece, <span class="keyword">int</span> targetX,<span class="keyword">int</span> targetY)</span> </span>&#123;</span><br><span class="line"><span class="keyword">if</span> (type.equals(<span class="string">"Go"</span>)) &#123;</span><br><span class="line">System.err.println(<span class="string">"You can't move piece while playing go"</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ((type.equals(<span class="string">"Chess"</span>) &amp;&amp; (nowPiece.x()&gt;<span class="number">7</span> || nowPiece.y()&gt;<span class="number">7</span>)) || (type.equals(<span class="string">"Go"</span>) &amp;&amp; (nowPiece.x()&gt;<span class="number">19</span> || nowPiece.y()&gt;<span class="number">19</span>)))&#123;</span><br><span class="line">System.err.println(<span class="string">"The place you want to move is out of the board."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">Piece choosePiece=board.get(nowPiece.x()).get(nowPiece.y());</span><br><span class="line"><span class="keyword">if</span> (choosePiece.name().equals(<span class="string">"0"</span>)) &#123;</span><br><span class="line">System.err.println(<span class="string">"The piece you choose doesn't exsit, please input another one."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!(choosePiece.name().equals(nowPiece.name()))) &#123;</span><br><span class="line">System.err.println(<span class="string">"The name of the piece you input is wrong, please change it."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!(choosePiece.belong().name().equals(nowPiece.belong().name()))) &#123;</span><br><span class="line">System.err.println(<span class="string">"You input wrong player name."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!(nowPlayer.name().equals(P1.name())) &amp;&amp;</span><br><span class="line">!(nowPlayer.name().equals(P2.name()))) &#123;</span><br><span class="line">System.err.println(<span class="string">"You input wrong player name."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (!(nowPiece.belong().name()).equals(nowPlayer.name())) &#123;</span><br><span class="line">System.err.println(<span class="string">"The piece you choose doesn't belong with you, please choose another one."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> ((type.equals(<span class="string">"Chess"</span>) &amp;&amp; (targetX&gt;<span class="number">7</span> || targetY&gt;<span class="number">7</span>)) || (type.equals(<span class="string">"Go"</span>) &amp;&amp; (targetX&gt;<span class="number">19</span> || targetY&gt;<span class="number">19</span>)))&#123;</span><br><span class="line">System.err.println(<span class="string">"The place you want to move your piece to is out of the board."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (nowPiece.x()==targetX &amp;&amp; nowPiece.y()==targetY) &#123;</span><br><span class="line">System.err.println(<span class="string">"Two place is same."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">Piece targetPiece=board.get(targetX).get(targetY);</span><br><span class="line"><span class="keyword">if</span> (!targetPiece.name().equals(<span class="string">"0"</span>)) &#123;</span><br><span class="line">System.err.println(<span class="string">"The target palce already exsit a piece."</span>);</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br><span class="line">board.get(targetPiece.x()).get(targetPiece.y()).Setname(nowPiece.name());</span><br><span class="line">board.get(targetPiece.x()).get(targetPiece.y()).SetPlayer(nowPlayer);</span><br><span class="line">board.get(nowPiece.x()).get(nowPiece.y()).Setname(<span class="string">"0"</span>);</span><br><span class="line">board.get(nowPiece.x()).get(nowPiece.y()).SetPlayer(<span class="keyword">new</span> Player(<span class="string">"0"</span>));</span><br><span class="line">out();</span><br><span class="line"><span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
-          
-        
       
     </div>
     
@@ -382,209 +376,28 @@
       
 
       
-
-      
-
       
       
-        <div class="post-eof"></div>
+
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="zeromaker">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/author5.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zeromaker's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/23/Lab1/" itemprop="url">Lab1</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T20:40:34+08:00">
-                2019-06-23
-              </time>
+              <a href="/2019/06/23/Lab1/" rel="next" title="Lab1">
+                <i class="fa fa-chevron-left"></i> Lab1
+              </a>
             
+          </div>
 
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="软件构造Lab1总结"><a href="#软件构造Lab1总结" class="headerlink" title="软件构造Lab1总结"></a>软件构造Lab1总结</h1><hr>
-<p>软件构造lab1主要有以下几个任务需要完成</p>
-<blockquote>
-<ul>
-<li>Magic Squares</li>
-<li>Turtle Graphics</li>
-<li>Social Network</li>
-<li>Tweet</li>
-</ul>
-</blockquote>
-<p>每个任务还分别有一些子任务需要实现：</p>
-<h3 id="Magic-Squares"><a href="#Magic-Squares" class="headerlink" title="Magic Squares"></a>Magic Squares</h3><blockquote>
-<ul>
-<li>实现幻方填写，并处理各种异常情况</li>
-<li>修改一个错误的幻方程序</li>
-</ul>
-</blockquote>
-<h3 id="Turtle-Graphics"><a href="#Turtle-Graphics" class="headerlink" title="Turtle Graphics"></a>Turtle Graphics</h3><blockquote>
-<ul>
-<li>绘制正方形</li>
-<li>绘制多边形</li>
-<li>绘制自己的艺术图形</li>
-</ul>
-</blockquote>
-<h3 id="Social-Network"><a href="#Social-Network" class="headerlink" title="Social Network"></a>Social Network</h3><blockquote>
-<ul>
-<li>实现一个简单的数据结构存储图</li>
-<li>实现最段路算法</li>
-</ul>
-</blockquote>
-<h3 id="Tweet"><a href="#Tweet" class="headerlink" title="Tweet"></a>Tweet</h3><blockquote>
-<ul>
-<li>实现一条Tweet的存储，并实现按照时间筛选tweet</li>
-<li>统计每个人的影响力，并进行排序</li>
-</ul>
-</blockquote>
-<p>下面是实现过程中遇到的问题和发现的有趣现象</p>
-<hr>
-<h2 id="Magic-Squares-1"><a href="#Magic-Squares-1" class="headerlink" title="Magic Squares"></a>Magic Squares</h2><h3 id="1-isLegalMagicSquare"><a href="#1-isLegalMagicSquare" class="headerlink" title="1. isLegalMagicSquare"></a>1. isLegalMagicSquare</h3><p>实现思路：</p>
-<ol>
-<li>读入文件：使用BufferedReader按行读入文件，至EOF结束，按行处理读入数据</li>
-<li>判断输入数据是否合法：若含有空格之外的空白字符，不能构成矩阵，输入的数字并不是整数等，返回false并给出提示</li>
-<li>判断输入矩阵是否为幻方：按照规则检查输入矩阵每一行、每一列、主次对角线上的元素和是否相等</li>
-</ol>
-<h3 id="2-generateMagicSquare"><a href="#2-generateMagicSquare" class="headerlink" title="2 generateMagicSquare"></a>2 generateMagicSquare</h3><p>为原程序有如下问题<br>输入的n为偶数时，所产生的异常是访问数组所用的下标超出范围。<br>输入的n为负数时，所产生的异常是访问数组所用的下标为负数。<br>为了解决该类异常抛出,采用if语句，判断输入的n是否合法。</p>
-<h2 id="Turtle-Graphics-1"><a href="#Turtle-Graphics-1" class="headerlink" title="Turtle Graphics"></a>Turtle Graphics</h2><h3 id="1-导入项目"><a href="#1-导入项目" class="headerlink" title="1. 导入项目"></a>1. 导入项目</h3><p>一开始，使用idea尝试直接打开项目，结果发现报错，之后使用eclipse尝试打开成功<br>原因是项目是按照eclipse的组织结构组织的，其中的.project文件等均是按照eclipse的格式设置，因此直接使用idea打开将会报错，但在idea中使用‘导入eclipse项目’按钮则不会发生错误</p>
-<h3 id="2-Turtle-graphics-and-drawSquare"><a href="#2-Turtle-graphics-and-drawSquare" class="headerlink" title="2. Turtle graphics and drawSquare"></a>2. Turtle graphics and drawSquare</h3><p>任务需求：该任务需要我们使用turtle库中提供的函数在屏幕上画出一个正方形。<br>任务实现：通过四次循环，每次向前一个边长的距离，之后顺时针旋转九十度<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">drawSquare</span><span class="params">(Turtle turtle, <span class="keyword">int</span> sideLength)</span> </span>&#123;</span><br><span class="line">        turtle.forward(sideLength);</span><br><span class="line">        turtle.turn(<span class="number">90</span>);</span><br><span class="line">        turtle.forward(sideLength);</span><br><span class="line">        turtle.turn(<span class="number">90</span>);</span><br><span class="line">        turtle.forward(sideLength);</span><br><span class="line">        turtle.turn(<span class="number">90</span>);</span><br><span class="line">        turtle.forward(sideLength);</span><br><span class="line">        turtle.turn(<span class="number">90</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="3-Drawing-polygons"><a href="#3-Drawing-polygons" class="headerlink" title="3. Drawing polygons"></a>3. Drawing polygons</h3><p>任务需求：首先该任务需要我们实现calculateRegularPolygonAngle方法来计算多边形内角度数，之后利用该方法编写drawRegularPolygon方法画出一个<br>多边形<br>任务实现：通过多边形外角和为360度的定理计算出多边形外角的度数，之后在drawRegularPolygon方法中实现一个循环，循环边数次，每次前进之后旋转对应角度，即可画出多边形<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">drawRegularPolygon</span><span class="params">(Turtle turtle, <span class="keyword">int</span> sides, <span class="keyword">int</span> sideLength)</span> </span>&#123;</span><br><span class="line">    	<span class="keyword">double</span> turnangle=calculateRegularPolygonAngle(sides);</span><br><span class="line">    	<span class="comment">//draw each side of the regular polygon</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sides;i++) &#123;</span><br><span class="line">    		turtle.forward(sideLength);</span><br><span class="line">    		turtle.turn(<span class="number">180.0</span>-turnangle);</span><br><span class="line">    	&#125;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="4-Calculating-Bearings"><a href="#4-Calculating-Bearings" class="headerlink" title="4. Calculating Bearings"></a>4. Calculating Bearings</h3><p>任务需求：实现CalculatingBearings方法，根据输入的当前位置的坐标和朝向，计算为了对准目标朝向需要转过的角度。<br>任务实现：利用反三角函数，分别算出目标位置对x轴的夹角和当前朝向对x轴的夹角，之后相减即可<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">double</span> <span class="title">calculateBearingToPoint</span><span class="params">(<span class="keyword">double</span> currentBearing, <span class="keyword">int</span> currentX, <span class="keyword">int</span> currentY,</span></span></span><br><span class="line"><span class="function"><span class="params">                                                 <span class="keyword">int</span> targetX, <span class="keyword">int</span> targetY)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (currentX==targetX &amp;&amp; currentY==targetY) &#123;</span><br><span class="line">        	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// angle between target angle and X axis</span></span><br><span class="line">        <span class="keyword">double</span> rangle=Math.atan2(targetY-currentY,targetX-currentX);</span><br><span class="line">        <span class="keyword">double</span> pi=Math.PI;</span><br><span class="line">        <span class="keyword">double</span> degreeangle=rangle*<span class="number">180</span>/pi;</span><br><span class="line">        <span class="comment">// angle between current bearing and X axis</span></span><br><span class="line">        currentBearing=<span class="number">90</span>-currentBearing;</span><br><span class="line">        <span class="comment">// calculate the adjustment angel that needs to be done</span></span><br><span class="line">        degreeangle=currentBearing-degreeangle;</span><br><span class="line">        <span class="comment">// change it to [0,360)</span></span><br><span class="line">        <span class="keyword">while</span> (degreeangle&lt;<span class="number">0</span>) &#123;</span><br><span class="line">        	degreeangle+=<span class="number">360</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (degreeangle&gt;=<span class="number">360</span>) &#123;</span><br><span class="line">        	degreeangle-=<span class="number">360</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> degreeangle;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="Social-Network-1"><a href="#Social-Network-1" class="headerlink" title="Social Network"></a>Social Network</h2><h3 id="1-设计-实现FriendshipGraph类"><a href="#1-设计-实现FriendshipGraph类" class="headerlink" title="1. 设计/实现FriendshipGraph类"></a>1. 设计/实现FriendshipGraph类</h3><ol>
-<li>FriendshipGraph类需要实现以下功能<br>a)    加点功能：支持向图中加入一个点，并能判断该点名称是否和之前的点重复<br>b)    加边功能：支持向图中加入一条边<br>c)    最段路功能：支持计算该图中任意两点间的最段路<br>实现过程：<br>FriendshipGraph类使用邻接表存储一个图，具体实现可以通过一个map和vector的嵌套<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//the link list that store the graph</span></span><br><span class="line">	<span class="keyword">private</span> Map&lt;Person,Vector&lt;Person&gt;&gt; igraph =<span class="keyword">new</span> HashMap&lt;Person,Vector&lt;Person&gt;&gt;();</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>Friendship类中各个方法实现如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addVertex</span><span class="params">(Person node)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (igraph.containsKey(node)) &#123;</span><br><span class="line">			<span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"The person already exits."</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">// add the node to link list</span></span><br><span class="line">		igraph.put(node, <span class="keyword">new</span> Vector&lt;Person&gt;());</span><br><span class="line">		<span class="comment">// add the node to node list</span></span><br><span class="line">		nodelist.add(node);</span><br><span class="line">		<span class="keyword">return</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(Person a, Person b)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (!igraph.containsKey(a)) &#123;</span><br><span class="line">		<span class="keyword">throw</span> <span class="keyword">new</span> Error(<span class="string">"One person doed not exit."</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="comment">//add edge</span></span><br><span class="line">	igraph.get(a).add(b);</span><br><span class="line">	<span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">getDistance</span><span class="params">(Person s, Person e)</span> </span>&#123;</span><br><span class="line">		<span class="comment">//distance array</span></span><br><span class="line">		Map&lt;Person,Integer&gt; dis = <span class="keyword">new</span> HashMap&lt;Person,Integer&gt;();</span><br><span class="line">		<span class="comment">//Initialize distance array, -1 represents infinity</span></span><br><span class="line">		<span class="keyword">for</span> (Person i : nodelist) &#123;</span><br><span class="line">			dis.put(i, -<span class="number">1</span>);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (s==e) &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//Initialize distance array, distance between s and s is 0</span></span><br><span class="line">		dis.put(s,<span class="number">0</span>);</span><br><span class="line">		<span class="comment">//bfs queue</span></span><br><span class="line">		Queue&lt;Person&gt; queue = <span class="keyword">new</span> LinkedList&lt;Person&gt;();</span><br><span class="line">		<span class="comment">//add s to queue</span></span><br><span class="line">		queue.offer(s);</span><br><span class="line">		<span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">			Person x=queue.element();</span><br><span class="line">			Vector&lt;Person&gt; linklist=igraph.get(x);</span><br><span class="line">			<span class="keyword">for</span> (Person i : linklist) &#123;</span><br><span class="line">				<span class="comment">// if find e</span></span><br><span class="line">				<span class="keyword">if</span> (i==e) &#123;</span><br><span class="line">					<span class="keyword">return</span> dis.get(x)+<span class="number">1</span>;</span><br><span class="line">				&#125;</span><br><span class="line">				<span class="comment">// if current point does not be visted</span></span><br><span class="line">				<span class="keyword">if</span> (dis.get(i)==-<span class="number">1</span>) &#123;</span><br><span class="line">					<span class="comment">// calculate distance</span></span><br><span class="line">					dis.put(i, dis.get(x)+<span class="number">1</span>);</span><br><span class="line">					<span class="comment">// add to queue</span></span><br><span class="line">					queue.add(i);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="comment">//remove the front of queue</span></span><br><span class="line">			queue.remove(x);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> dis.get(e);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-设计-实现Person类"><a href="#2-设计-实现Person类" class="headerlink" title="2. 设计/实现Person类"></a>2. 设计/实现Person类</h3><p>实现思路<br>Person类用于存储姓名信息，并定义一带参数的构造函数应对客户端代码<br>实现过程：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span></span>&#123;</span><br><span class="line">	<span class="keyword">private</span> String name;</span><br><span class="line">	Person(String n)&#123;</span><br><span class="line">		name=n;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> String <span class="title">getname</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> name;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="Tweet-1"><a href="#Tweet-1" class="headerlink" title="Tweet"></a>Tweet</h3><h3 id="1-Extracting-data-from-tweets"><a href="#1-Extracting-data-from-tweets" class="headerlink" title="1. Extracting data from tweets"></a>1. Extracting data from tweets</h3><p>该问题需要实现:<br>任务需求：</p>
-<ol>
-<li>获取tweet所跨越的时间间隔</li>
-<li>获取tweet所@的用户<br>实现思路：</li>
-<li>扫描所有的tweet，获取时间最早的tweet和时间最晚的tweet</li>
-<li>首先用空格对某一条tweet的context进行分词，之后对每一个单词进行查找，对找到@的单词进行进一步判断，若符合@规则，提取被@的用户名<br>代码如下：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Timespan <span class="title">getTimespan</span><span class="params">(List&lt;Tweet&gt; tweets)</span> </span>&#123;</span><br><span class="line">    	Instant start=<span class="keyword">null</span>,end=<span class="keyword">null</span>;</span><br><span class="line">    	<span class="keyword">for</span> (Tweet i : tweets) &#123;</span><br><span class="line">    		<span class="comment">// if start and end haven't be Initialized, Initializing it</span></span><br><span class="line">    		<span class="keyword">if</span> (start==<span class="keyword">null</span> &amp;&amp; end==<span class="keyword">null</span>) &#123;</span><br><span class="line">    			start=i.getTimestamp();</span><br><span class="line">    			end=i.getTimestamp();</span><br><span class="line">    			<span class="keyword">continue</span>;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="comment">//current time stamp</span></span><br><span class="line">    		Instant now=i.getTimestamp();</span><br><span class="line">    		<span class="comment">//if start is latter than current time stamp, renew it</span></span><br><span class="line">    		<span class="keyword">if</span> (start.isAfter(now)) &#123;</span><br><span class="line">    			start=i.getTimestamp();</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="comment">//if current time stamp is latter than end, renew it</span></span><br><span class="line">    		<span class="keyword">if</span> (now.isAfter(end)) &#123;</span><br><span class="line">    			end=now;</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	Timespan ans = <span class="keyword">new</span> Timespan(start,end);</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Set&lt;String&gt; <span class="title">getMentionedUsers</span><span class="params">(List&lt;Tweet&gt; tweets)</span> </span>&#123;</span><br><span class="line">        Set&lt;String&gt; ans = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        Set&lt;String&gt; lower = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        <span class="keyword">for</span> (Tweet i : tweets) &#123;</span><br><span class="line">        	<span class="comment">//split the tweet context and get the words list</span></span><br><span class="line">        	String[] itemp=i.getText().split(<span class="string">" "</span>);</span><br><span class="line">        	<span class="keyword">for</span> (String j : itemp) &#123;</span><br><span class="line">        		<span class="keyword">int</span> pos=j.indexOf(<span class="string">"@"</span>);</span><br><span class="line">        		<span class="comment">// if the word contains @</span></span><br><span class="line">        		<span class="keyword">if</span> (pos!=-<span class="number">1</span>) &#123;</span><br><span class="line">        			<span class="keyword">if</span> (pos==(j.length())-<span class="number">1</span>) &#123;</span><br><span class="line">        				<span class="keyword">continue</span>;</span><br><span class="line">        			&#125;</span><br><span class="line">        			<span class="comment">//judge if the prechar vaild in tweet user name</span></span><br><span class="line">        			<span class="keyword">if</span> (pos!=<span class="number">0</span>) &#123;</span><br><span class="line">        				<span class="keyword">char</span> prechar=j.charAt(pos-<span class="number">1</span>);</span><br><span class="line">        				<span class="keyword">if</span> (isvaild(prechar)) &#123;</span><br><span class="line">        					<span class="keyword">continue</span>;</span><br><span class="line">        				&#125;</span><br><span class="line">        			&#125;</span><br><span class="line">        			<span class="keyword">int</span> tail=-<span class="number">1</span>;</span><br><span class="line">        			<span class="comment">// find the last vaild user name after @</span></span><br><span class="line">        			<span class="keyword">for</span> (<span class="keyword">int</span> k=pos+<span class="number">1</span>;k&lt;j.length();k++) &#123;</span><br><span class="line">        				<span class="keyword">char</span> tempchar=j.charAt(k);</span><br><span class="line">        				<span class="keyword">if</span> (isvaild(tempchar)) &#123;</span><br><span class="line">        					tail=k;</span><br><span class="line">        				&#125;</span><br><span class="line">        				<span class="keyword">else</span> &#123;</span><br><span class="line">        					<span class="keyword">break</span>;</span><br><span class="line">        				&#125;</span><br><span class="line">        			&#125;</span><br><span class="line">        			<span class="comment">//exact the mentioned user</span></span><br><span class="line">        			<span class="keyword">if</span> (tail!=-<span class="number">1</span>) &#123;</span><br><span class="line">        				String nowusername=j.substring(pos+<span class="number">1</span>,tail+<span class="number">1</span>);</span><br><span class="line">        				<span class="keyword">if</span> (nowusername.equals(<span class="string">""</span>)) </span><br><span class="line">        					<span class="keyword">continue</span>;</span><br><span class="line">        				<span class="keyword">if</span> (lower.contains(nowusername.toLowerCase())) &#123;</span><br><span class="line">        					<span class="keyword">continue</span>;</span><br><span class="line">        				&#125;</span><br><span class="line">            			ans.add(nowusername);</span><br><span class="line">            			lower.add(nowusername.toLowerCase());</span><br><span class="line">        					</span><br><span class="line">        			&#125;</span><br><span class="line">        		&#125;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="2-Filtering-lists-of-tweets"><a href="#2-Filtering-lists-of-tweets" class="headerlink" title="2.  Filtering lists of tweets"></a>2.  Filtering lists of tweets</h3><p>该问题需要筛选tweet，在tweet类List中筛选出符合要求的部分返回。<br>任务需求：</p>
-<ol>
-<li>筛选在特定时间范围内的tweet</li>
-<li>筛选某一特定作者对tweet</li>
-<li>筛选包含有某些特定单词的tweet<br>实现思路：<br>依次扫描每条tweet, 判断是否符合筛选条件即可<br>代码实现：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Tweet&gt; <span class="title">writtenBy</span><span class="params">(List&lt;Tweet&gt; tweets, String username)</span> </span>&#123;</span><br><span class="line">    	List&lt;Tweet&gt; ans=<span class="keyword">new</span> ArrayList&lt;Tweet&gt;();</span><br><span class="line">    	<span class="comment">//search all tweets and get the answer</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tweets.size();i++) &#123;</span><br><span class="line">    		Tweet nowtweet=tweets.get(i);</span><br><span class="line">    		<span class="keyword">if</span> (nowtweet.getAuthor()==username) &#123;</span><br><span class="line">    			ans.add(nowtweet);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Tweet&gt; <span class="title">inTimespan</span><span class="params">(List&lt;Tweet&gt; tweets, Timespan timespan)</span> </span>&#123;</span><br><span class="line">    	List&lt;Tweet&gt; ans=<span class="keyword">new</span> ArrayList&lt;Tweet&gt;();</span><br><span class="line">    	Instant start=timespan.getStart();</span><br><span class="line">    	Instant end=timespan.getEnd();</span><br><span class="line">    	<span class="comment">//search all tweets and get the answer</span></span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tweets.size();i++) &#123;</span><br><span class="line">    		Tweet nowtweet=tweets.get(i);</span><br><span class="line">    		Instant nowtimestamp=nowtweet.getTimestamp();</span><br><span class="line">    		<span class="keyword">if</span> (nowtimestamp.isAfter(start) &amp;&amp; end.isAfter(nowtimestamp)) &#123;</span><br><span class="line">    			ans.add(nowtweet);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;Tweet&gt; <span class="title">containing</span><span class="params">(List&lt;Tweet&gt; tweets, List&lt;String&gt; words)</span> </span>&#123;</span><br><span class="line">    	List&lt;Tweet&gt; ans=<span class="keyword">new</span> ArrayList&lt;Tweet&gt;();</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;words.size();i++) &#123;</span><br><span class="line">    		words.set(i, words.get(i).toLowerCase());</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">for</span> (Tweet i : tweets) &#123;</span><br><span class="line">    		<span class="comment">//change to lower case for judgment</span></span><br><span class="line">    		String[] itemp=i.getText().toLowerCase().split(<span class="string">" "</span>);</span><br><span class="line">    		<span class="keyword">boolean</span> flag=<span class="keyword">false</span>;</span><br><span class="line">    		<span class="keyword">for</span> (String j : itemp) &#123;</span><br><span class="line">    			<span class="keyword">for</span> (String k : words) &#123;</span><br><span class="line">    				<span class="keyword">if</span> (j.equals(k)) &#123;</span><br><span class="line">    					flag=<span class="keyword">true</span>;</span><br><span class="line">    					<span class="keyword">break</span>;</span><br><span class="line">    				&#125;</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">if</span> (flag) &#123;</span><br><span class="line">    			ans.add(i);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="3-Inferring-a-social-network"><a href="#3-Inferring-a-social-network" class="headerlink" title="3. Inferring a social network"></a>3. Inferring a social network</h3><p>任务需求：</p>
-<ol>
-<li>通过tweet内容猜测用户之间的follow关系</li>
-<li>通过用户之间的follow关系统计影响力，并将用户按照影响力排名<br>实现思路：</li>
-<li>某一用户@的用户必然是其关注的用户</li>
-<li>根据第一条准则，统计计算影响力，并将用户按照影响力排名<br>代码实现：<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Set&lt;String&gt;&gt; guessFollowsGraph(List&lt;Tweet&gt; tweets) &#123;</span><br><span class="line">    	Map&lt;String,Set&lt;String&gt;&gt; ans = <span class="keyword">new</span> HashMap&lt;String,Set&lt;String&gt;&gt;();</span><br><span class="line">    	Map&lt;String,Set&lt;String&gt;&gt; theme = <span class="keyword">new</span> HashMap&lt;String,Set&lt;String&gt;&gt;();</span><br><span class="line">    	Extract getat= <span class="keyword">new</span> Extract();</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tweets.size();i++) &#123;</span><br><span class="line">    		Tweet nowtweet=tweets.get(i);</span><br><span class="line">    		String nowauthor=nowtweet.getAuthor();</span><br><span class="line">    		List&lt;Tweet&gt; nowlist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    		Set&lt;String&gt; nowat = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">    		nowlist.add(nowtweet);</span><br><span class="line">    		nowat=getat.getMentionedUsers(nowlist);</span><br><span class="line">    		<span class="keyword">if</span> (nowat.isEmpty())</span><br><span class="line">    			<span class="keyword">continue</span>;</span><br><span class="line">    		<span class="keyword">if</span> (!ans.containsKey(nowauthor)) &#123;</span><br><span class="line">    			ans.put(nowauthor,nowat);</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">for</span> (String j : nowat) &#123;</span><br><span class="line">    			<span class="keyword">if</span> (ans.get(nowauthor).contains(j)) &#123;</span><br><span class="line">    				<span class="keyword">continue</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			ans.get(nowauthor).add(j);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;String, Set&lt;String&gt;&gt; MyguessFollowsGraph(List&lt;Tweet&gt; tweets) &#123;</span><br><span class="line">    	Map&lt;String,Set&lt;String&gt;&gt; ans = <span class="keyword">new</span> HashMap&lt;String,Set&lt;String&gt;&gt;();</span><br><span class="line">    	Map&lt;String,Set&lt;String&gt;&gt; theme = <span class="keyword">new</span> HashMap&lt;String,Set&lt;String&gt;&gt;();</span><br><span class="line">    	Extract getat= <span class="keyword">new</span> Extract();</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tweets.size();i++) &#123;</span><br><span class="line">    		Tweet nowtweet=tweets.get(i);</span><br><span class="line">    		String nowauthor=nowtweet.getAuthor();</span><br><span class="line">    		List&lt;Tweet&gt; nowlist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    		Set&lt;String&gt; nowat = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">    		nowlist.add(nowtweet);</span><br><span class="line">    		nowat=getat.getMentionedUsers(nowlist);</span><br><span class="line">    		<span class="keyword">if</span> (nowat.isEmpty())</span><br><span class="line">    			<span class="keyword">continue</span>;</span><br><span class="line">    		<span class="keyword">if</span> (!ans.containsKey(nowauthor)) &#123;</span><br><span class="line">    			ans.put(nowauthor,nowat);</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">for</span> (String j : nowat) &#123;</span><br><span class="line">    			<span class="keyword">if</span> (ans.get(nowauthor).contains(j)) &#123;</span><br><span class="line">    				<span class="keyword">continue</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			ans.get(nowauthor).add(j);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">for</span> (<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;tweets.size();i++) &#123;</span><br><span class="line">    		Tweet nowtweet=tweets.get(i);</span><br><span class="line">    		String nowauthor=nowtweet.getAuthor();</span><br><span class="line">    		List&lt;Tweet&gt; nowlist = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    		Set&lt;String&gt; nowtheme = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">    		nowlist.add(nowtweet);</span><br><span class="line">    		nowtheme=getat.getTheme(nowlist);</span><br><span class="line">    		<span class="keyword">if</span> (nowtheme.isEmpty())</span><br><span class="line">    			<span class="keyword">continue</span>;</span><br><span class="line">    		<span class="keyword">if</span> (!theme.containsKey(nowauthor)) &#123;</span><br><span class="line">    			theme.put(nowauthor,nowtheme);</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="keyword">for</span> (String j : nowtheme) &#123;</span><br><span class="line">    			<span class="keyword">if</span> (theme.get(nowauthor).contains(j)) &#123;</span><br><span class="line">    				<span class="keyword">continue</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			theme.get(nowauthor).add(j);</span><br><span class="line">    		&#125;</span><br><span class="line">    	&#125;</span><br><span class="line">    	<span class="keyword">for</span> (String i : theme.keySet())</span><br><span class="line">    		<span class="keyword">for</span> (String j : theme.keySet()) &#123;</span><br><span class="line">    			<span class="keyword">if</span> (i.equals(j)) &#123;</span><br><span class="line">    				<span class="keyword">continue</span>;</span><br><span class="line">    			&#125;</span><br><span class="line">    			Set&lt;String&gt; tempSet=theme.get(i);</span><br><span class="line">    			tempSet.retainAll(theme.get(j));</span><br><span class="line">    			<span class="keyword">if</span> (!tempSet.isEmpty()) &#123;</span><br><span class="line">    				ans.get(i).add(j);</span><br><span class="line">    				ans.get(j).add(i);</span><br><span class="line">    			&#125;</span><br><span class="line">    		&#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Find the people in a social network who have the greatest influence, in</span></span><br><span class="line"><span class="comment">     * the sense that they have the most followers.</span></span><br><span class="line"><span class="comment">     * </span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> followsGraph</span></span><br><span class="line"><span class="comment">     *            a social network (as defined above)</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> a list of all distinct Twitter usernames in followsGraph, in</span></span><br><span class="line"><span class="comment">     *         descending order of follower count.</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> List&lt;String&gt; <span class="title">influencers</span><span class="params">(Map&lt;String, Set&lt;String&gt;&gt; followsGraph)</span> </span>&#123;</span><br><span class="line">        Map&lt;String, Integer&gt; followernumber = <span class="keyword">new</span> HashMap&lt;String, Integer&gt;();</span><br><span class="line">        <span class="keyword">for</span> (String i : followsGraph.keySet()) &#123;</span><br><span class="line">        	Set&lt;String&gt; followerSet = <span class="keyword">new</span> HashSet&lt;String&gt;();</span><br><span class="line">        	followerSet=followsGraph.get(i);</span><br><span class="line">        	<span class="keyword">for</span> (String j : followerSet) &#123;</span><br><span class="line">        		<span class="keyword">if</span> (!followernumber.containsKey(j)) &#123;</span><br><span class="line">        			followernumber.put(j, <span class="number">1</span>);</span><br><span class="line">        			<span class="keyword">continue</span>;</span><br><span class="line">        		&#125;</span><br><span class="line">        		Integer nownumber=followernumber.get(j);</span><br><span class="line">        		followernumber.put(j, nownumber+<span class="number">1</span>);</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        List&lt;Map.Entry&lt;String, Integer&gt;&gt; list = <span class="keyword">new</span> ArrayList&lt;Map.Entry&lt;String, Integer&gt;&gt;(followernumber.entrySet());</span><br><span class="line">        Collections.sort(list, <span class="keyword">new</span> Comparator&lt;Map.Entry&lt;String, Integer&gt;&gt;() &#123;</span><br><span class="line">            <span class="meta">@Override</span></span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Map.Entry&lt;String, Integer&gt; mapping1, Map.Entry&lt;String, Integer&gt; mapping2)</span> </span>&#123;</span><br><span class="line">                <span class="keyword">return</span> mapping2.getValue().compareTo(mapping1.getValue());</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        Iterator&lt;Map.Entry&lt;String, Integer&gt;&gt; iter = list.iterator();</span><br><span class="line">        Map.Entry&lt;String, Integer&gt; tmpEntry = <span class="keyword">null</span>;</span><br><span class="line">        List&lt;String&gt; ans=<span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br><span class="line">        <span class="keyword">while</span> (iter.hasNext()) &#123;</span><br><span class="line">        	tmpEntry = iter.next();</span><br><span class="line">        	ans.add(tmpEntry.getKey());</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -594,10 +407,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -605,6 +419,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -625,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -670,6 +497,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件构造Lab2总结"><span class="nav-number">1.</span> <span class="nav-text">软件构造Lab2总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Poetic-Walks"><span class="nav-number">1.0.1.</span> <span class="nav-text">Poetic Walks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Re-implement-the-Social-Network-in-Lab1"><span class="nav-number">1.0.2.</span> <span class="nav-text">Re-implement the Social Network in Lab1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Playing-Chess"><span class="nav-number">1.0.3.</span> <span class="nav-text">Playing Chess</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Poetic-Walks-1"><span class="nav-number">1.1.</span> <span class="nav-text">Poetic Walks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-1-Test-Graph"><span class="nav-number">1.1.1.</span> <span class="nav-text">Problem 1: Test Graph </span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-Graph"><span class="nav-number">1.1.2.</span> <span class="nav-text">Implement Graph </span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Implement-ConcreteVerticesGraph"><span class="nav-number">1.2.</span> <span class="nav-text">Implement ConcreteVerticesGraph</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Make-the-implementations-generic"><span class="nav-number">1.2.1.</span> <span class="nav-text">Make the implementations generic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-Graph-empty"><span class="nav-number">1.2.2.</span> <span class="nav-text">Implement Graph.empty()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Problem-4-Poetic-walks"><span class="nav-number">1.2.3.</span> <span class="nav-text">Problem 4: Poetic walks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement-GraphPoet"><span class="nav-number">1.2.4.</span> <span class="nav-text">Implement GraphPoet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Re-implement-the-Social-Network-in-Lab1-1"><span class="nav-number">1.3.</span> <span class="nav-text">Re-implement the Social Network in Lab1</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ADT设计-实现方案"><span class="nav-number">1.3.1.</span> <span class="nav-text">ADT设计/实现方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ChessAndGoGame实现方案-以move为例"><span class="nav-number">1.3.2.</span> <span class="nav-text">ChessAndGoGame实现方案(以move为例)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -810,6 +653,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
