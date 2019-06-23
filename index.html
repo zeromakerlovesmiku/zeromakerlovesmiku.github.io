@@ -232,6 +232,157 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeromaker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author5.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeromaker's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/23/Lab4/" itemprop="url">Lab4</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T23:05:41+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="软件构造Lab4总结"><a href="#软件构造Lab4总结" class="headerlink" title="软件构造Lab4总结"></a>软件构造Lab4总结</h1><hr>
+<p>软件构造lab4主要需要在Lab3的基础上完成如下任务</p>
+<blockquote>
+<ul>
+<li>静态代码检查</li>
+<li>错误/异常处理</li>
+<li>防御性编程</li>
+<li>日志</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="Error-and-Exception-Handling"><a href="#Error-and-Exception-Handling" class="headerlink" title="Error and Exception Handling"></a>Error and Exception Handling</h2><p>对三个应用场景，分别设计了一些需要处理的异常，并在客户端程序client中捕获并处理</p>
+<ol>
+<li>StellarSystem<br>设计了三种异常：文件异常、相同元素异常和语法异常<br>文件异常<br>描述：用户输入的文件不存在或未找到<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的StelllarSystem到初始状态</li>
+</ol>
+<p>相同元素异常<br>描述：用户输入的文件中含有相同的元素或相同的命令<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的StelllarSystem到初始状态</p>
+<p>语法异常<br>描述：用户输入文件中含有不符合语法规范的语句，具体设计了5种不符合规范的形式：<br>命令格式错误：命令未按照规定的格式，使用&lt;&gt;将命令主题扩起<br>对象拼写错误：对象拼写有误<br>参数数量错误：参数数量不对<br>分隔符错误：未使用,作为分隔符<br>致命错误：乱码或完全不符合语法规范<br>客户端处理方式：根据错误类型不同，写入不同的log信息，并根据错误类型提示用户可能存在的问题，同时恢复StelllarSystem</p>
+<ol start="2">
+<li>AtomStructure<br>设计了三种异常：文件异常，内容异常和语法异常<br>文件异常<br>描述：用户输入的文件不存在或未找到<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的AtomStructure到初始状态</li>
+</ol>
+<p>内容异常<br>描述：AtomStructure文件中出现了两个原子核描述或两个电子轨道描述<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的AtomStructure到初始状态</p>
+<p>语法异常<br>描述：用户输入文件中含有不符合语法规范的语句，具体设计了5种不符合规范的形式：<br>命令格式错误：命令未按照规定的格式<br>对象拼写错误：对象拼写有误<br>参数类型错误：在电子轨道描述中，使用小数或非正整数描述轨道上的电子数量<br>分隔符错误：未使用;作为分隔符<br>致命错误：乱码或完全不符合语法规范<br>客户端处理方式：根据错误类型不同，写入不同的log信息，并根据错误类型提示用户可能存在的问题，同时恢复AtomStructure</p>
+<ol start="3">
+<li>SocialNetwork<br>设计了四种异常：文件异常，相同元素异常，自环异常和语法异常<br>文件异常<br>描述：用户输入的文件不存在或未找到<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的SocialNetwork到初始状态</li>
+</ol>
+<p>相同元素异常<br>描述：用户输入的文件中含有相同的元素或相同的命令<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的SocialNetwork到初始状态</p>
+<p>自环异常<br>描述：用户输入中含有自己指向自己的边<br>客户端处理方式：写入log，在控制台打印提示信息，要求重新输入命令，同时恢复待建立的SocialNetwork到初始状态</p>
+<p>语法异常<br>描述：用户输入文件中含有不符合语法规范的语句，具体设计了5种不符合规范的形式：<br>命令格式错误：命令未按照规定的格式，使用&lt;&gt;将命令主题扩起<br>对象拼写错误：对象拼写有误<br>参数数量错误：参数数量不对<br>分隔符错误：未使用,作为分隔符<br>致命错误：乱码或完全不符合语法规范<br>客户端处理方式：根据错误类型不同，写入不同的log信息，并根据错误类型提示用户可能存在的问题，同时恢复SocialNetwork</p>
+<h2 id="Assertion-and-Defensive-Programming"><a href="#Assertion-and-Defensive-Programming" class="headerlink" title="Assertion and Defensive Programming"></a>Assertion and Defensive Programming</h2><h3 id="checkRep-检查invariants"><a href="#checkRep-检查invariants" class="headerlink" title="checkRep()检查invariants"></a>checkRep()检查invariants</h3><p>在实验3中，已经在所有具体应用程序的父类中实现了较为完善的checkRep()函数，这个函数自动被所有的应用程序所继承<br>所有应用程序的父类RI如下<br>Representation invariant:<br>All keys in relation, crealtion and belong should in nodelist<br>If relation.get(i).contains(j) then relation.get(j).contains(i). In another word, the relation Map represent a one-way relation, so you should keep the relation Symmetric<br>Each node should in the Keyset of crealtion, if the node i isn’t connected to the center, then crelation.get(i)==-1<br>the track that a object belong should have been added into the class before<br>chekRep如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">checkRep</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">for</span> (E i : relation.keySet()) &#123;</span><br><span class="line"><span class="keyword">assert</span> nodelist.contains(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (E i : crelation.keySet()) &#123;</span><br><span class="line"><span class="keyword">assert</span> nodelist.contains(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (E i : belong.keySet()) &#123;</span><br><span class="line"><span class="keyword">assert</span> nodelist.contains(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (E i : nodelist) &#123;</span><br><span class="line"><span class="keyword">assert</span> belong.containsKey(i);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (E i : nodelist) &#123;</span><br><span class="line">List&lt;E&gt; relist = relation.get(i);</span><br><span class="line"><span class="keyword">for</span> (E j : relist) &#123;</span><br><span class="line"><span class="keyword">assert</span> relation.get(j).contains(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">for</span> (E i : belong.keySet()) &#123;</span><br><span class="line"><span class="keyword">int</span> trackid = belong.get(i);</span><br><span class="line"><span class="keyword">boolean</span> have = <span class="keyword">false</span>;</span><br><span class="line"><span class="keyword">for</span> (Track j : orbitlist) &#123;</span><br><span class="line"><span class="keyword">if</span> (j.id() == trackid) &#123;</span><br><span class="line">have = <span class="keyword">true</span>;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">assert</span> trackid == -<span class="number">1</span> || have;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="pre-post-condition"><a href="#pre-post-condition" class="headerlink" title="pre-/post-condition"></a>pre-/post-condition</h3><p>Pre-condition保障：<br>在从文件中读入信息以新建一个对象时，通过校验用户信息的合法性来保障新建对象符合Rep，同时在构造方法中，保证采用符合对象Rep的方式来构建对象。如何校验用户信息合法性在上一节已经有详细描述。</p>
+<p>Post-condition保障：<br>进行每个操作时，都考虑如何不违背Rep之规定，每次操作完毕之后，都checkRep来检查自身是否符合Rep规定<br>例如，在addnode时，如果用户未规定具体轨道，则将轨道设置为-1，并且像belong, relation和crelation增加初始状态，以满足Rep要求</p>
+<h2 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h2><p>使用Java标准日志java logging，首先新建一个Logger对象，设置其名称为ClientLog<br>之后，设置其Level为Info<br>之后，为其添加fileHandler，如果未找到日志文件，输出错误信息并要求用户建立文件<br>之后，在所有命令执行成功之后进行log写入，在所有捕获到异常之处也进行log写入</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -855,7 +1006,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
