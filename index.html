@@ -232,6 +232,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeromaker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author5.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeromaker's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/23/Lab5/" itemprop="url">Lab5</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T23:16:20+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="软件构造Lab5总结"><a href="#软件构造Lab5总结" class="headerlink" title="软件构造Lab5总结"></a>软件构造Lab5总结</h1><hr>
+<p>软件构造lab5主要需要在Lab4的基础上完成如下任务</p>
+<blockquote>
+<ul>
+<li>静态代码检查</li>
+<li>高性能IO</li>
+<li>java 命令行工具和可视化工具对代码进行分析</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="CheckStyle"><a href="#CheckStyle" class="headerlink" title="CheckStyle"></a>CheckStyle</h2><p>3.1.1 人工代码走查（walkthrough）<br>发现的问题如下：</p>
+<ol>
+<li>双目运算符前后未加括号</li>
+<li>For语句之后为加大括号</li>
+<li>一行超过80字符<br>修改方式如下<br>1.双目运算符前后添加加号<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">thePath = thePath + fileSeperator + <span class="string">"src"</span> + fileSeperator + <span class="string">"log"</span></span><br><span class="line">+ fileSeperator;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>2.For语句之后添加括号<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (Person j : ans.nodelist()) &#123;</span><br><span class="line"><span class="keyword">if</span> (j.name().equals(i.getKey())) &#123;</span><br><span class="line">nowx = j;</span><br><span class="line"><span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3.对行进行一定程度的分行<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">!commandLine.matches(<span class="string">"calcDistance\\s[a-zA-z]+\\s[a-zA-z]+\\s"</span></span><br><span class="line">+ <span class="string">"[a-zA-z]+\\"</span> + <span class="string">"s[0-9]\\d*\\.?\\d*\\s[0-9]\\d*\\.?\\d*"</span></span><br><span class="line">+ <span class="string">"\\s[0-9]\\"</span> + <span class="string">"d*\\.?\\d*\\s[CW|CW]+\\s[0-9]\\d*\\.?\\"</span></span><br><span class="line">+ <span class="string">"d*\\s[a-zA-z]+\\s[a-zA-z]+\\s[a-zA-z]+\\"</span></span><br><span class="line">+ <span class="string">"s[0-9]\\d*\\.?\\d*\\s[0-9]\\d*\\.?\\d*\\"</span></span><br><span class="line">+ <span class="string">"s[0-9]\\d*\\.?\\d*\\s[CW|CW]+\\s[0-9]\\d*"</span> + <span class="string">"\\.?\\d*"</span>)</span><br></pre></td></tr></table></figure></p>
+<h2 id="高性能IO"><a href="#高性能IO" class="headerlink" title="高性能IO"></a>高性能IO</h2><h3 id="策略设计"><a href="#策略设计" class="headerlink" title="策略设计"></a>策略设计</h3><p>实现了如下三种IO方式：<br>Input:<br>BufferedReader方法，按行读<br>FileInputStream方法，全部装载入内存中<br>Files.readallBytes方法，全部装载入内存中</p>
+<p>Output:<br>FileWriter方法，逐行写入<br>Bufferredwriter<br>FileOutputStream</p>
+<h3 id="Strategy设计模式"><a href="#Strategy设计模式" class="headerlink" title="Strategy设计模式"></a>Strategy设计模式</h3><p>Strategy设计模式：<br>首先设计InputStrategy和OutputStrategy两个接口，定义针对三种类的I/O函数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Inputstrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> StellarSystem <span class="title">buildStellarSystemfromfile</span><span class="params">(<span class="keyword">final</span> String filePath)</span></span></span><br><span class="line"><span class="function"><span class="keyword">throws</span> FileNotFoundException, SameObjectException, GrammarErrorException,</span></span><br><span class="line"><span class="function">IOException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> AtomStructure <span class="title">buildAtomStructurefromfile</span><span class="params">(<span class="keyword">final</span> String filePath)</span></span></span><br><span class="line"><span class="function"><span class="keyword">throws</span> FileNotFoundException, ContextErrorException,</span></span><br><span class="line"><span class="function">GrammarErrorException, IOException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> SocialNetworkCircle <span class="title">buildASoicalNetworkfromfile</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> String filePath)</span> <span class="keyword">throws</span> FileNotFoundException, SelfLoopException,</span></span><br><span class="line"><span class="function">GrammarErrorException, IOException, SameObjectException</span>;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">OutputStrategy</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeStellarSystemtofile</span><span class="params">(StellarSystem now)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeAtomStructuretofile</span><span class="params">(AtomStructure now)</span> <span class="keyword">throws</span> IOException</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">writeSocialNetworkCircletofile</span><span class="params">(SocialNetworkCircle now)</span></span></span><br><span class="line"><span class="function"><span class="keyword">throws</span> IOException</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后，设计两个Context类，Contextwriter和Contextreader，将上述I/OStrategy作为其filed, 定义如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Contextreader</span> </span>&#123;</span><br><span class="line">Inputstrategy reader;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">Contextreader</span><span class="params">(Inputstrategy reader)</span> </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.reader = reader;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> Inputstrategy <span class="title">reader</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">return</span> reader;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>之后即可自由切换读入模式</p>
+<h2 id="代码动态分析"><a href="#代码动态分析" class="headerlink" title="代码动态分析"></a>代码动态分析</h2><p>主要使用JVM中的各种命令对代码进行调试、分析，查找性能瓶颈，分析GC流程等</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1006,7 +1150,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
