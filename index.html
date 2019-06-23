@@ -232,6 +232,218 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeromaker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author5.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeromaker's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/23/Lab3/" itemprop="url">Lab3</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T22:40:42+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="软件构造Lab3总结"><a href="#软件构造Lab3总结" class="headerlink" title="软件构造Lab3总结"></a>软件构造Lab3总结</h1><hr>
+<p>##写在前面<br>Lab3是所有实验当中最繁琐复杂的一个，设计难度和实现难度比起之前的实验均有极大的提升，又由于没能充分利用好五一假期都时间，导致五一假期回来之后的两个late days超负荷工作，望引以为戒</p>
+<hr>
+<p>软件构造lab3主要需要完成如下任务</p>
+<blockquote>
+<ul>
+<li>三个具体应用场景的开发，共同特征为多轨道系统<br>我选择的三个场景为<ul>
+<li>StellarSystem</li>
+<li>AtomStructure</li>
+<li>SocialNetworkCircle</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>每个场景需要实现以下共同功能</p>
+<blockquote>
+<ul>
+<li>基于语法的图数据输入</li>
+<li>面向复用设计的各种ADT</li>
+<li>GUI</li>
+<li>可复用的第三方API</li>
+</ul>
+</blockquote>
+<p>每个具体应用还需要实现一些特殊功能</p>
+<h3 id="StellarSystem"><a href="#StellarSystem" class="headerlink" title="StellarSystem"></a>StellarSystem</h3><blockquote>
+<ul>
+<li>查询行星位置</li>
+<li>卫星功能</li>
+</ul>
+</blockquote>
+<h3 id="AtomStructure"><a href="#AtomStructure" class="headerlink" title="AtomStructure"></a>AtomStructure</h3><blockquote>
+<ul>
+<li>电子跃迁</li>
+</ul>
+</blockquote>
+<h3 id="SocialNetworkCircle"><a href="#SocialNetworkCircle" class="headerlink" title="SocialNetworkCircle"></a>SocialNetworkCircle</h3><blockquote>
+<ul>
+<li>计算轨道</li>
+<li>计算任意两个人的逻辑距离</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="可复用ADT设计"><a href="#可复用ADT设计" class="headerlink" title="可复用ADT设计"></a>可复用ADT设计</h2><h3 id="CircularOrbit-lt-L-E-gt"><a href="#CircularOrbit-lt-L-E-gt" class="headerlink" title="CircularOrbit&lt;L,E&gt;"></a>CircularOrbit&lt;L,E&gt;</h3><p>为了通用性，将该类设计为一个接口，通过总结，需要设计在接口中的共性属性如下</p>
+<ol>
+<li>中心物体</li>
+<li>轨道上所有物体的list</li>
+<li>所有轨道的list</li>
+<li>表示所有关系的Map relation</li>
+<li>表示物体与中心体之间关系的Map crelation</li>
+<li>表示物体属于某个轨道的Mao belong<br>具体AF如下<br>AF(CircularOrbit) = {<br>center = The center object<br>nodelist = The list that contains all the node<br>orbitlist = The list that contains all the tracks<br>relation = A Map, each key is a node in nodelist, the value is the list that related with key.<br>crealation = A Map, each key is a node in nodelist, the value represents the relation between center object and key<br>belong = A Map, each key is a node in nodelist, the value represents the track key belongs to.<br>}</li>
+</ol>
+<h3 id="Track"><a href="#Track" class="headerlink" title="Track"></a>Track</h3><p>共性属性总结如下：</p>
+<ol>
+<li>轨道半径，高精度浮点数类</li>
+<li>轨道id，轨道的唯一标识符</li>
+</ol>
+<h3 id="PhysicalObject"><a href="#PhysicalObject" class="headerlink" title="PhysicalObject"></a>PhysicalObject</h3><p>为了复用考虑，首先建立一个借口，其中含有共性属性如下</p>
+<ol start="2">
+<li>物体名称，String类<br>共性方法即为get上述属性的方法<br>之后使用PhysicalObject类实现该结构，之后所有类都继承自该类</li>
+<li>Stellar<br>StellarSystem的中心物体，拥有特性属性如下</li>
+<li>恒星半径，浮点类</li>
+<li>恒星质量，浮点类<br>特性方法为get上述属性的方法。</li>
+<li>Planet<br>StellarSystem的轨道物体，拥有特性属性如下</li>
+<li>行星状态，String类</li>
+<li>行星颜色，String类</li>
+<li>行星轨道半径，高精度浮点类</li>
+<li>行星半径，高精度浮点类</li>
+<li>行星速度，高精度浮点类</li>
+<li>行星公转方向，String类</li>
+<li>行星初始角度，高精度浮点类<br>特性方法为get上述属性的方法。</li>
+<li>Person<br>SocialNetwork的中心物体和轨道物体，拥有特性属性如下</li>
+<li>年龄， 整数类</li>
+<li>性别， String类<br>特性方法为get上述属性的方法。</li>
+<li>Electron<br>AtomStructure的轨道物体，拥有特性属性如下</li>
+<li>Id，电子加入的顺序<br>特性方法为get上述属性的方法。</li>
+</ol>
+<h2 id="可复用API设计"><a href="#可复用API设计" class="headerlink" title="可复用API设计"></a>可复用API设计</h2><h3 id="getObjectDistributionEntropy方法设计"><a href="#getObjectDistributionEntropy方法设计" class="headerlink" title="getObjectDistributionEntropy方法设计"></a>getObjectDistributionEntropy方法设计</h3><p>Entropy = Sigma (Si*log(Si/N))<br>实现如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;L, E&gt; <span class="function"><span class="keyword">double</span> <span class="title">getObjectDistributionEntropy</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> AbstractCircularOrbit&lt;L, E&gt; c)</span> </span>&#123;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">for</span> (Track i : c.orbitlist()) &#123;</span><br><span class="line"><span class="keyword">double</span> size = c.objectonorbit(i.id()).size();</span><br><span class="line">ans += size * (Math.log(size / c.nodelist().size()));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="getLogicalDistance"><a href="#getLogicalDistance" class="headerlink" title="getLogicalDistance"></a>getLogicalDistance</h3><p>通过bfs方法获取两个节点之间的距离<br>具体实现如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;L, E&gt; <span class="function"><span class="keyword">int</span> <span class="title">getLogicalDistance</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> AbstractCircularOrbit&lt;L, E&gt; c,</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> E start, <span class="keyword">final</span> E end)</span> </span>&#123;</span><br><span class="line">Map&lt;E, Integer&gt; dis = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (E i : c.nodelist()) &#123;</span><br><span class="line">dis.put(i, -<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">dis.put(start, <span class="number">0</span>);</span><br><span class="line">Queue&lt;E&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">queue.add(start);</span><br><span class="line"><span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">E nowx = queue.element();</span><br><span class="line">queue.remove();</span><br><span class="line"><span class="keyword">if</span> (nowx.equals(c.center())) &#123;</span><br><span class="line"><span class="keyword">for</span> (E i : c.nodelist()) &#123;</span><br><span class="line"><span class="keyword">if</span> (c.crelation().get(i)!=-<span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (c.crelation().get(i) != -<span class="number">1</span> &amp;&amp; dis.get(i) == -<span class="number">1</span>) &#123;</span><br><span class="line">dis.put(i, dis.get(nowx) + <span class="number">1</span>);</span><br><span class="line">queue.add(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">for</span> (E i : c.relation().get(nowx)) &#123;</span><br><span class="line"><span class="keyword">if</span> (dis.get(i) == -<span class="number">1</span>) &#123;</span><br><span class="line">dis.put(i, dis.get(nowx) + <span class="number">1</span>);</span><br><span class="line">queue.add(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dis.get(end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="应用设计与开发"><a href="#应用设计与开发" class="headerlink" title="应用设计与开发"></a>应用设计与开发</h2><h3 id="StellarSystem-1"><a href="#StellarSystem-1" class="headerlink" title="StellarSystem"></a>StellarSystem</h3><p>特性功能实现如下：</p>
+<ol>
+<li>输出t时刻行星的位置：通过传入高精度浮点型参数time，调用在StellarSystem类中实现的方法，计算得到行星的位置</li>
+<li>输出行星之间的物理距离：通过传入高精度浮点型参数time，调用在StellarSystem类中实现的方法，计算得到行星之间的物理距离<br>设计了一套交互系统和命令解析系统，能够解析用户的输入，进行各种操作</li>
+</ol>
+<h3 id="AtomStructure-1"><a href="#AtomStructure-1" class="headerlink" title="AtomStructure"></a>AtomStructure</h3><p>特性功能实现如下：</p>
+<ol>
+<li>跃迁方法：通过传入跃迁前的轨道和跃迁后的轨道，通过调用在AtomStructure中实现的方法，模拟电子的跃迁行为</li>
+</ol>
+<h3 id="SocialNetworkCircle-1"><a href="#SocialNetworkCircle-1" class="headerlink" title="SocialNetworkCircle"></a>SocialNetworkCircle</h3><p>特性方法实现如下：</p>
+<ol>
+<li>判定用户处于哪个轨道：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+<li>计算信息扩散度：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+<li>计算逻辑距离：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -643,7 +855,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

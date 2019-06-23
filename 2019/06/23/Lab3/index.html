@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="软件构造Lab3总结 ##写在前面Lab3是所有实验当中最繁琐复杂的一个，设计难度和实现难度比起之前的实验均有极大的提升，又由于没能充分利用好五一假期都时间，导致五一假期回来之后的两个late days超负荷工作，望引以为戒  软件构造lab3主要需要完成如下任务   三个具体应用场景的开发，共同特征为多轨道系统我选择的三个场景为 StellarSystem AtomStructure Socia">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lab3">
+<meta property="og:url" content="http://yoursite.com/2019/06/23/Lab3/index.html">
+<meta property="og:site_name" content="Zeromaker&#39;s Blog">
+<meta property="og:description" content="软件构造Lab3总结 ##写在前面Lab3是所有实验当中最繁琐复杂的一个，设计难度和实现难度比起之前的实验均有极大的提升，又由于没能充分利用好五一假期都时间，导致五一假期回来之后的两个late days超负荷工作，望引以为戒  软件构造lab3主要需要完成如下任务   三个具体应用场景的开发，共同特征为多轨道系统我选择的三个场景为 StellarSystem AtomStructure Socia">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-23T14:40:55.016Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lab3">
+<meta name="twitter:description" content="软件构造Lab3总结 ##写在前面Lab3是所有实验当中最繁琐复杂的一个，设计难度和实现难度比起之前的实验均有极大的提升，又由于没能充分利用好五一假期都时间，导致五一假期回来之后的两个late days超负荷工作，望引以为戒  软件构造lab3主要需要完成如下任务   三个具体应用场景的开发，共同特征为多轨道系统我选择的三个场景为 StellarSystem AtomStructure Socia">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/23/Lab3/">
+
+
+
+
+
+  <title>Lab3 | Zeromaker's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zeromaker's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/23/Lab3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="zeromaker">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/author5.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zeromaker's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lab3</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-23T22:40:42+08:00">
+                2019-06-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="软件构造Lab3总结"><a href="#软件构造Lab3总结" class="headerlink" title="软件构造Lab3总结"></a>软件构造Lab3总结</h1><hr>
+<p>##写在前面<br>Lab3是所有实验当中最繁琐复杂的一个，设计难度和实现难度比起之前的实验均有极大的提升，又由于没能充分利用好五一假期都时间，导致五一假期回来之后的两个late days超负荷工作，望引以为戒</p>
+<hr>
+<p>软件构造lab3主要需要完成如下任务</p>
+<blockquote>
+<ul>
+<li>三个具体应用场景的开发，共同特征为多轨道系统<br>我选择的三个场景为<ul>
+<li>StellarSystem</li>
+<li>AtomStructure</li>
+<li>SocialNetworkCircle</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>每个场景需要实现以下共同功能</p>
+<blockquote>
+<ul>
+<li>基于语法的图数据输入</li>
+<li>面向复用设计的各种ADT</li>
+<li>GUI</li>
+<li>可复用的第三方API</li>
+</ul>
+</blockquote>
+<p>每个具体应用还需要实现一些特殊功能</p>
+<h3 id="StellarSystem"><a href="#StellarSystem" class="headerlink" title="StellarSystem"></a>StellarSystem</h3><blockquote>
+<ul>
+<li>查询行星位置</li>
+<li>卫星功能</li>
+</ul>
+</blockquote>
+<h3 id="AtomStructure"><a href="#AtomStructure" class="headerlink" title="AtomStructure"></a>AtomStructure</h3><blockquote>
+<ul>
+<li>电子跃迁</li>
+</ul>
+</blockquote>
+<h3 id="SocialNetworkCircle"><a href="#SocialNetworkCircle" class="headerlink" title="SocialNetworkCircle"></a>SocialNetworkCircle</h3><blockquote>
+<ul>
+<li>计算轨道</li>
+<li>计算任意两个人的逻辑距离</li>
+</ul>
+</blockquote>
+<hr>
+<h2 id="可复用ADT设计"><a href="#可复用ADT设计" class="headerlink" title="可复用ADT设计"></a>可复用ADT设计</h2><h3 id="CircularOrbit-lt-L-E-gt"><a href="#CircularOrbit-lt-L-E-gt" class="headerlink" title="CircularOrbit&lt;L,E&gt;"></a>CircularOrbit&lt;L,E&gt;</h3><p>为了通用性，将该类设计为一个接口，通过总结，需要设计在接口中的共性属性如下</p>
+<ol>
+<li>中心物体</li>
+<li>轨道上所有物体的list</li>
+<li>所有轨道的list</li>
+<li>表示所有关系的Map relation</li>
+<li>表示物体与中心体之间关系的Map crelation</li>
+<li>表示物体属于某个轨道的Mao belong<br>具体AF如下<br>AF(CircularOrbit) = {<br>center = The center object<br>nodelist = The list that contains all the node<br>orbitlist = The list that contains all the tracks<br>relation = A Map, each key is a node in nodelist, the value is the list that related with key.<br>crealation = A Map, each key is a node in nodelist, the value represents the relation between center object and key<br>belong = A Map, each key is a node in nodelist, the value represents the track key belongs to.<br>}</li>
+</ol>
+<h3 id="Track"><a href="#Track" class="headerlink" title="Track"></a>Track</h3><p>共性属性总结如下：</p>
+<ol>
+<li>轨道半径，高精度浮点数类</li>
+<li>轨道id，轨道的唯一标识符</li>
+</ol>
+<h3 id="PhysicalObject"><a href="#PhysicalObject" class="headerlink" title="PhysicalObject"></a>PhysicalObject</h3><p>为了复用考虑，首先建立一个借口，其中含有共性属性如下</p>
+<ol start="2">
+<li>物体名称，String类<br>共性方法即为get上述属性的方法<br>之后使用PhysicalObject类实现该结构，之后所有类都继承自该类</li>
+<li>Stellar<br>StellarSystem的中心物体，拥有特性属性如下</li>
+<li>恒星半径，浮点类</li>
+<li>恒星质量，浮点类<br>特性方法为get上述属性的方法。</li>
+<li>Planet<br>StellarSystem的轨道物体，拥有特性属性如下</li>
+<li>行星状态，String类</li>
+<li>行星颜色，String类</li>
+<li>行星轨道半径，高精度浮点类</li>
+<li>行星半径，高精度浮点类</li>
+<li>行星速度，高精度浮点类</li>
+<li>行星公转方向，String类</li>
+<li>行星初始角度，高精度浮点类<br>特性方法为get上述属性的方法。</li>
+<li>Person<br>SocialNetwork的中心物体和轨道物体，拥有特性属性如下</li>
+<li>年龄， 整数类</li>
+<li>性别， String类<br>特性方法为get上述属性的方法。</li>
+<li>Electron<br>AtomStructure的轨道物体，拥有特性属性如下</li>
+<li>Id，电子加入的顺序<br>特性方法为get上述属性的方法。</li>
+</ol>
+<h2 id="可复用API设计"><a href="#可复用API设计" class="headerlink" title="可复用API设计"></a>可复用API设计</h2><h3 id="getObjectDistributionEntropy方法设计"><a href="#getObjectDistributionEntropy方法设计" class="headerlink" title="getObjectDistributionEntropy方法设计"></a>getObjectDistributionEntropy方法设计</h3><p>Entropy = Sigma (Si*log(Si/N))<br>实现如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;L, E&gt; <span class="function"><span class="keyword">double</span> <span class="title">getObjectDistributionEntropy</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> AbstractCircularOrbit&lt;L, E&gt; c)</span> </span>&#123;</span><br><span class="line"><span class="keyword">double</span> ans = <span class="number">0.0</span>;</span><br><span class="line"><span class="keyword">for</span> (Track i : c.orbitlist()) &#123;</span><br><span class="line"><span class="keyword">double</span> size = c.objectonorbit(i.id()).size();</span><br><span class="line">ans += size * (Math.log(size / c.nodelist().size()));</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> ans;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="getLogicalDistance"><a href="#getLogicalDistance" class="headerlink" title="getLogicalDistance"></a>getLogicalDistance</h3><p>通过bfs方法获取两个节点之间的距离<br>具体实现如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> &lt;L, E&gt; <span class="function"><span class="keyword">int</span> <span class="title">getLogicalDistance</span><span class="params">(</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> AbstractCircularOrbit&lt;L, E&gt; c,</span></span></span><br><span class="line"><span class="function"><span class="params"><span class="keyword">final</span> E start, <span class="keyword">final</span> E end)</span> </span>&#123;</span><br><span class="line">Map&lt;E, Integer&gt; dis = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line"><span class="keyword">for</span> (E i : c.nodelist()) &#123;</span><br><span class="line">dis.put(i, -<span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line">dis.put(start, <span class="number">0</span>);</span><br><span class="line">Queue&lt;E&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">queue.add(start);</span><br><span class="line"><span class="keyword">while</span> (!queue.isEmpty()) &#123;</span><br><span class="line">E nowx = queue.element();</span><br><span class="line">queue.remove();</span><br><span class="line"><span class="keyword">if</span> (nowx.equals(c.center())) &#123;</span><br><span class="line"><span class="keyword">for</span> (E i : c.nodelist()) &#123;</span><br><span class="line"><span class="keyword">if</span> (c.crelation().get(i)!=-<span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">if</span> (c.crelation().get(i) != -<span class="number">1</span> &amp;&amp; dis.get(i) == -<span class="number">1</span>) &#123;</span><br><span class="line">dis.put(i, dis.get(nowx) + <span class="number">1</span>);</span><br><span class="line">queue.add(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">for</span> (E i : c.relation().get(nowx)) &#123;</span><br><span class="line"><span class="keyword">if</span> (dis.get(i) == -<span class="number">1</span>) &#123;</span><br><span class="line">dis.put(i, dis.get(nowx) + <span class="number">1</span>);</span><br><span class="line">queue.add(i);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> dis.get(end);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="应用设计与开发"><a href="#应用设计与开发" class="headerlink" title="应用设计与开发"></a>应用设计与开发</h2><h3 id="StellarSystem-1"><a href="#StellarSystem-1" class="headerlink" title="StellarSystem"></a>StellarSystem</h3><p>特性功能实现如下：</p>
+<ol>
+<li>输出t时刻行星的位置：通过传入高精度浮点型参数time，调用在StellarSystem类中实现的方法，计算得到行星的位置</li>
+<li>输出行星之间的物理距离：通过传入高精度浮点型参数time，调用在StellarSystem类中实现的方法，计算得到行星之间的物理距离<br>设计了一套交互系统和命令解析系统，能够解析用户的输入，进行各种操作</li>
+</ol>
+<h3 id="AtomStructure-1"><a href="#AtomStructure-1" class="headerlink" title="AtomStructure"></a>AtomStructure</h3><p>特性功能实现如下：</p>
+<ol>
+<li>跃迁方法：通过传入跃迁前的轨道和跃迁后的轨道，通过调用在AtomStructure中实现的方法，模拟电子的跃迁行为</li>
+</ol>
+<h3 id="SocialNetworkCircle-1"><a href="#SocialNetworkCircle-1" class="headerlink" title="SocialNetworkCircle"></a>SocialNetworkCircle</h3><p>特性方法实现如下：</p>
+<ol>
+<li>判定用户处于哪个轨道：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+<li>计算信息扩散度：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+<li>计算逻辑距离：通过调用SocialNetworkCircle中实现的方法，计算得到结果</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/23/Lab2/" rel="next" title="Lab2">
+                <i class="fa fa-chevron-left"></i> Lab2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/author5.jpg" alt="zeromaker">
+            
+              <p class="site-author-name" itemprop="name">zeromaker</p>
+              <p class="site-description motion-element" itemprop="description">Existentialism is a Humanism</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#软件构造Lab3总结"><span class="nav-number">1.</span> <span class="nav-text">软件构造Lab3总结</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StellarSystem"><span class="nav-number">1.0.1.</span> <span class="nav-text">StellarSystem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomStructure"><span class="nav-number">1.0.2.</span> <span class="nav-text">AtomStructure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SocialNetworkCircle"><span class="nav-number">1.0.3.</span> <span class="nav-text">SocialNetworkCircle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可复用ADT设计"><span class="nav-number">1.1.</span> <span class="nav-text">可复用ADT设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CircularOrbit-lt-L-E-gt"><span class="nav-number">1.1.1.</span> <span class="nav-text">CircularOrbit&lt;L,E&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Track"><span class="nav-number">1.1.2.</span> <span class="nav-text">Track</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#PhysicalObject"><span class="nav-number">1.1.3.</span> <span class="nav-text">PhysicalObject</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可复用API设计"><span class="nav-number">1.2.</span> <span class="nav-text">可复用API设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#getObjectDistributionEntropy方法设计"><span class="nav-number">1.2.1.</span> <span class="nav-text">getObjectDistributionEntropy方法设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#getLogicalDistance"><span class="nav-number">1.2.2.</span> <span class="nav-text">getLogicalDistance</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#应用设计与开发"><span class="nav-number">1.3.</span> <span class="nav-text">应用设计与开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#StellarSystem-1"><span class="nav-number">1.3.1.</span> <span class="nav-text">StellarSystem</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#AtomStructure-1"><span class="nav-number">1.3.2.</span> <span class="nav-text">AtomStructure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SocialNetworkCircle-1"><span class="nav-number">1.3.3.</span> <span class="nav-text">SocialNetworkCircle</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">zeromaker</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
